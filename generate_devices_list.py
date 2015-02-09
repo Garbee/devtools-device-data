@@ -4,6 +4,7 @@ import numbers
 import os
 import os.path
 import sys
+import jsonschema
 
 try:
     import json
@@ -15,7 +16,9 @@ POSSIBLE_TYPES = ["phone", "tablet", "notebook", "desktop", "unknown"]
 def load_and_parse_json(file_name):
   try:
     with open(file_name, "r") as file:
-      return json.load(file)
+      data = json.load(file)
+
+      return data
   except:
     print 'ERROR: Failed to parse %s' % file_name
     raise
